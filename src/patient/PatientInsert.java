@@ -1,5 +1,6 @@
 package patient;
 import database.DataBase;
+import model.Patient;
 
 import java.sql.DriverManager;
 import  java.util.*;
@@ -11,7 +12,7 @@ import java.sql.PreparedStatement;
 public class PatientInsert {
     public static void insertPatient() throws Exception {
         Scanner sc= new Scanner(System.in);
-        String sql = "insert into patient (patient_name,age,gender,phone,address,date_of_birth) values (?,?,?,?,?,?)";
+        String sql = "insert into patient (patient_name,age,gender,phoneNumber,address,date_of_birth) values (?,?,?,?,?,?)";
         Connection con = DataBase.getConnection();
         PreparedStatement ps = con.prepareStatement(sql);
         System.out.println("Enter the Patient name: ");
@@ -27,12 +28,23 @@ public class PatientInsert {
         String address = sc.nextLine();
         System.out.println("Enter the Date of Birth: ");
         String DOB = sc.nextLine();
-        ps.setString(1,name);
-        ps.setInt(2,age);
-        ps.setString(3,gender);
-        ps.setString(4,number);
-        ps.setString(5 ,address);
-        ps.setDate(6, Date.valueOf(DOB));
+
+
+        Patient patient = new Patient(
+                name,
+                age,
+                gender,
+                number,
+                address,
+                DOB
+        );
+
+        ps.setString(1, patient.getPatient_name());
+        ps.setInt(2, patient.getAge());
+        ps.setString(3, patient.getGender());
+        ps.setString(4, patient.getPhone());
+        ps.setString(5, patient.getAddress());
+        ps.setDate(6, Date.valueOf(patient.getDate_of_birth()));
 
         int rows = ps.executeUpdate();
 
