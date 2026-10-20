@@ -1,22 +1,60 @@
-import database.DataBase;
-import patient.PatientInsert;
+import service.PatientService;
+import serviceimpl.PatientServiceImpl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
+import static menus.PatientMenu.patientMenu;
+
 public class main {
+
     public static void main(String[] args) {
-        try {
 
-            while (true) {
-                  PatientInsert.insertPatient();
+        Scanner sc = new Scanner(System.in);
+
+        PatientService patientService = new PatientServiceImpl();
+
+        while (true) {
+
+            System.out.println("\n================================");
+            System.out.println(" ||   HOSPITAL MANAGEMENT SYSTEM ||");
+            System.out.println("================================");
+
+            System.out.println("1. Patient Management");
+            System.out.println("2. Doctor Management");
+            System.out.println("3. Appointment Management");
+            System.out.println("4. Billing Management");
+            System.out.println("5. Exit");
+
+            System.out.print("Enter your choice: ");
+            int choice = sc.nextInt();
+            sc.nextLine();
+
+            switch (choice) {
+
+                case 1:
+                    patientMenu(sc, patientService);
+                    break;
+
+                case 2:
+                    System.out.println("Doctor Management - Coming Soon");
+                    break;
+
+                case 3:
+                    System.out.println("Appointment Management - Coming Soon");
+                    break;
+
+                case 4:
+                    System.out.println("Billing Management - Coming Soon");
+                    break;
+
+                case 5:
+                    System.out.println("Thank you!");
+                    sc.close();
+                    return;
+
+                default:
+                    System.out.println("Invalid choice!");
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-
         }
     }
 }
