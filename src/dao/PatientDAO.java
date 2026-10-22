@@ -12,6 +12,7 @@ public interface PatientDAO {
     void updatePatient(Patient patient);
 
     void deletePatient(int patientId);
+
     boolean patientExists(int patientId);
 
 }
