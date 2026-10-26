@@ -9,4 +9,5 @@ public interface DoctorDAO {
       List<Doctor> getAllDoctor();
       void  updateDoctor(Doctor doctor);
       void  deleteDoctor(int doctor_id);
+      boolean doctorExists(int doctor_id);
 }

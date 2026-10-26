@@ -1,9 +1,13 @@
+import menus.DoctorMenu;
+import service.DoctorService;
 import service.PatientService;
+import serviceimpl.DoctorServiceImpl;
 import serviceimpl.PatientServiceImpl;
 
 import java.util.Scanner;
 
 import static menus.PatientMenu.patientMenu;
+import static menus.DoctorMenu.doctorMenu;
 
 public class main {
 
@@ -12,6 +16,7 @@ public class main {
         Scanner sc = new Scanner(System.in);
 
         PatientService patientService = new PatientServiceImpl();
+        DoctorService doctorService = new DoctorServiceImpl();
 
         while (true) {
 
@@ -36,7 +41,7 @@ public class main {
                     break;
 
                 case 2:
-                    System.out.println("Doctor Management - Coming Soon");
+                    doctorMenu(sc,doctorService);
                     break;
 
                 case 3:

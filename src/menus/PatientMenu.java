@@ -96,21 +96,24 @@ public class PatientMenu {
 
                     List<Patient> patients = patientService.getAllPatients();
 
+                    System.out.println("Enter the Patient id :");
+                    int patientId = sc.nextInt();
+
                     if (patients.isEmpty()) {
                         System.out.println("No patients found.");
                     } else {
 
                         for (Patient patient : patients) {
+                                System.out.println("\n----------------------------");
+                                System.out.println("Patient ID: " + patient.getPatientId());
+                                System.out.println("Name: " + patient.getPatient_name());
+                                System.out.println("Age: " + patient.getAge());
+                                System.out.println("Gender: " + patient.getGender());
+                                System.out.println("Phone: " + patient.getPhone());
+                                System.out.println("Address: " + patient.getAddress());
+                                System.out.println("Date of Birth: " + patient.getDate_of_birth());
+                                System.out.println("----------------------------");
 
-                            System.out.println("\n----------------------------");
-                            System.out.println("Patient ID: " + patient.getPatientId());
-                            System.out.println("Name: " + patient.getPatient_name());
-                            System.out.println("Age: " + patient.getAge());
-                            System.out.println("Gender: " + patient.getGender());
-                            System.out.println("Phone: " + patient.getPhone());
-                            System.out.println("Address: " + patient.getAddress());
-                            System.out.println("Date of Birth: " + patient.getDate_of_birth());
-                            System.out.println("----------------------------");
                         }
                     }
 

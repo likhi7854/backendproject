@@ -16,7 +16,7 @@ public class DoctorDAOImpl implements DoctorDAO {
     public void insertDoctor(Doctor doctor) {
         String sql = """
                             Insert into doctor (Doctor_name,Specialization,gender,phone,Email_id,experience,consultation_fee ) 
-                            value(?,?,?,?,?,?,?,?)
+                            value(?,?,?,?,?,?,?)
                       """;
         try {
                 Connection con = DataBase.getConnection();
@@ -122,6 +122,58 @@ public class DoctorDAOImpl implements DoctorDAO {
 
     @Override
     public void deleteDoctor(int doctor_id) {
+        try {
+            String sql = "DELETE FROM doctor WHERE  doctor_id?";
+
+            Connection con = DataBase.getConnection();
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setInt(1, doctor_id);
+
+            int rows = ps.executeUpdate();
+
+            if (rows > 0) {
+                System.out.println("Delete deleted successfully.");
+            } else {
+                System.out.println("Delete ID not found.");
+            }
+
+            ps.close();
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+        @Override
+        public boolean doctorExists(int doctor_id) {
+
+            try {
+                String sql = "SELECT doctor_id FROM doctor WHERE doctor_id = ?";
+
+                Connection con = DataBase.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql);
+
+                ps.setInt(1, doctor_id);
+
+                ResultSet rs = ps.executeQuery();
+
+                boolean exists = rs.next();
+
+                rs.close();
+                ps.close();
+                con.close();
+
+                return exists;
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+
+
 
     }
 }

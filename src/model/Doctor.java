@@ -12,7 +12,7 @@ public class Doctor {
 
     public Doctor( String doctor_name, String specialization, String gender, String phone, String email, int experience, double consultation_fee) {
         this.doctor_name = doctor_name;
-        Specialization = specialization;
+        this.Specialization = specialization;
         this.gender = gender;
         this.phone = phone;
         this.email = email;
