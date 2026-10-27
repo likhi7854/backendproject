@@ -1,6 +1,9 @@
-import menus.DoctorMenu;
+import service.AppointmentService;
+import service.BillService;
 import service.DoctorService;
 import service.PatientService;
+import serviceimpl.AppointmentServiceImpl;
+import serviceimpl.BillServiceImpl;
 import serviceimpl.DoctorServiceImpl;
 import serviceimpl.PatientServiceImpl;
 
@@ -8,6 +11,8 @@ import java.util.Scanner;
 
 import static menus.PatientMenu.patientMenu;
 import static menus.DoctorMenu.doctorMenu;
+import static menus.AppointmentMenu.appointmentMenu;
+import static menus.BillMenu.billMenu;
 
 public class main {
 
@@ -17,12 +22,12 @@ public class main {
 
         PatientService patientService = new PatientServiceImpl();
         DoctorService doctorService = new DoctorServiceImpl();
+        AppointmentService appointmentService = new AppointmentServiceImpl();
+        BillService billService = new BillServiceImpl();
 
         while (true) {
 
-            System.out.println("\n================================");
-            System.out.println(" ||   HOSPITAL MANAGEMENT SYSTEM ||");
-            System.out.println("================================");
+            System.out.println("\n ||   HOSPITAL MANAGEMENT SYSTEM ||\n");
 
             System.out.println("1. Patient Management");
             System.out.println("2. Doctor Management");
@@ -45,11 +50,11 @@ public class main {
                     break;
 
                 case 3:
-                    System.out.println("Appointment Management - Coming Soon");
+                   appointmentMenu(sc,appointmentService);
                     break;
 
                 case 4:
-                    System.out.println("Billing Management - Coming Soon");
+                    billMenu(sc,billService);
                     break;
 
                 case 5:

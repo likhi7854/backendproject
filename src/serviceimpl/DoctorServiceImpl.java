@@ -1,5 +1,4 @@
 package serviceimpl;
-
 import dao.DoctorDAO;
 import daoimpl.DoctorDAOImpl;
 import model.Doctor;
@@ -7,14 +6,12 @@ import service.DoctorService;
 import java.util.List;
 
 public class DoctorServiceImpl implements DoctorService {
-
     private DoctorDAO doctorDAO = new DoctorDAOImpl();
     @Override
     public void addDoctor(Doctor doctor) {
         if (!validateDoctor(doctor)) {
             return;
         }
-
         doctorDAO.insertDoctor(doctor);
     }
 
@@ -71,15 +68,13 @@ public class DoctorServiceImpl implements DoctorService {
             System.out.println(" Consultation fee must be greater than 0.");
             return false;
         }
-        if (doctor.getDoctor_name() == null ||
-                doctor.getDoctor_name().trim().isEmpty()) {
+        if (doctor.getDoctor_name() == null || doctor.getDoctor_name().trim().isEmpty()) {
 
             System.out.println("Doctor name cannot be empty.");
             return false;
         }
 
-        if (doctor.getSpecialization() == null ||
-                doctor.getSpecialization().trim().isEmpty()) {
+        if (doctor.getSpecialization() == null || doctor.getSpecialization().trim().isEmpty()) {
 
             System.out.println("Specialization cannot be empty.");
             return false;

@@ -2,7 +2,6 @@ package menus;
 
 import model.Patient;
 import service.PatientService;
-
 import java.util.List;
 import java.util.Scanner;
 
@@ -95,14 +94,9 @@ public class PatientMenu {
                 case 2:
 
                     List<Patient> patients = patientService.getAllPatients();
-
-                    System.out.println("Enter the Patient id :");
-                    int patientId = sc.nextInt();
-
                     if (patients.isEmpty()) {
                         System.out.println("No patients found.");
                     } else {
-
                         for (Patient patient : patients) {
                                 System.out.println("\n----------------------------");
                                 System.out.println("Patient ID: " + patient.getPatientId());
